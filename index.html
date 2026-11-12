@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Code Pocket" />
+  <meta name="description" content="Карманная студия для HTML, CSS и JavaScript с мгновенным предпросмотром." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  <title>Code Pocket — Your creative playground</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon">&lt;/&gt;</span><span><strong>CODE<span class="brand-accent">POCKET</span></strong><small>BUILD SOMETHING COOL</small></span></div>
+      <div class="header-actions"><span id="saveStatus" class="save-status"><i></i> Сохранено</span><button class="icon-btn mobile-only" id="mobileMenu" aria-label="Открыть проекты">☰</button><button class="ghost-btn desktop-only" id="newProjectTop">+ Новый проект</button></div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top"><div class="side-label">РАБОЧЕЕ ПРОСТРАНСТВО</div><button class="primary-btn full" id="newProject">＋ Новый проект</button><div class="side-label projects-label">МОИ ПРОЕКТЫ <span id="projectCount">0</span></div></div>
+        <div id="projects" class="project-list"></div>
+        <div class="sidebar-bottom"><div class="tip"><span class="tip-icon">✦</span><strong>Маленький совет</strong><p>Пиши код и нажимай «Запустить», чтобы увидеть результат.</p></div><div class="sidebar-caption">CODE POCKET <span>v1.0</span></div></div>
+      </aside>
+
+      <main class="main">
+        <section class="project-heading"><div><div class="eyebrow"><span class="live-dot"></span> ТВОЯ МИНИ-СТУДИЯ</div><div class="title-row"><input id="projectName" aria-label="Название проекта" maxlength="60" spellcheck="false" /><span class="edit-symbol">✎</span></div><p>Превращай идеи в сайты — прямо со своего iPhone.</p></div><div class="project-actions"><button class="soft-btn" id="importBtn" title="Импорт HTML">↥ <span>Импорт</span></button><button class="soft-btn" id="exportBtn" title="Скачать HTML">↧ <span>Экспорт</span></button><button class="soft-btn danger-subtle" id="deleteBtn" title="Удалить проект">♲</button><input id="importInput" type="file" accept=".html,.htm,text/html" hidden /></div></section>
+
+        <section class="editor-card"><div class="pane-header"><div class="pane-title"><span class="window-dots"><i></i><i></i><i></i></span><strong>РЕДАКТОР КОДА</strong></div><div class="pane-meta"><span id="lineCount">1 строка</span><span class="keyboard-hint">⌘ + Enter</span></div></div>
+          <div class="editor-tabs" role="tablist" aria-label="Язык редактора"><button class="editor-tab active" data-tab="html" role="tab" aria-selected="true"><span class="tab-symbol html-symbol">◇</span> HTML <span class="tab-file">index.html</span></button><button class="editor-tab" data-tab="css" role="tab" aria-selected="false"><span class="tab-symbol css-symbol">◈</span> CSS <span class="tab-file">style.css</span></button><button class="editor-tab" data-tab="js" role="tab" aria-selected="false"><span class="tab-symbol js-symbol">⬡</span> JS <span class="tab-file">script.js</span></button></div>
+          <div class="code-area"><div id="lineNumbers" class="line-numbers" aria-hidden="true">1</div><textarea id="codeEditor" aria-label="Редактор кода" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" wrap="off"></textarea></div>
+          <div class="editor-footer"><span><span class="live-dot"></span> <span id="currentLanguage">HTML</span> <span class="separator">·</span> UTF-8</span><button id="runBtn" class="run-btn"><span>▶</span> Запустить код</button></div></section>
+
+        <section class="preview-card"><div class="pane-header preview-heading"><div class="pane-title"><span class="preview-icon">◉</span><strong>ЖИВОЙ ПРЕДПРОСМОТР</strong></div><div class="preview-actions"><button id="refreshBtn" class="small-icon" title="Перезапустить">↻</button><button id="openPreviewBtn" class="small-icon" title="Открыть результат в новой вкладке">↗</button></div></div><div class="browser-bar"><span class="browser-lock">⌁</span><span>preview.codepocket.local</span><span class="browser-state" id="previewState">Готово</span></div><div class="preview-wrap"><iframe id="preview" title="Предпросмотр сайта" sandbox="allow-scripts allow-modals allow-forms"></iframe></div><div class="console"><button id="consoleToggle" class="console-toggle" aria-expanded="false"><span>⌁ КОНСОЛЬ</span><span id="consoleStatus">Нет сообщений ▾</span></button><div id="consoleOutput" class="console-output" hidden></div></div></section>
+
+        <section class="templates"><div class="templates-title"><div><span class="eyebrow">НЕ ЗНАЕШЬ, С ЧЕГО НАЧАТЬ?</span><h2>Попробуй шаблон <span>✦</span></h2></div><span class="templates-info">Нажми, чтобы создать проект</span></div><div class="template-grid"><button class="template-card" data-template="landing"><span class="template-visual landing-visual"><span class="mini-window"><i></i><b></b><em></em></span></span><strong>Лендинг</strong><small>Яркая страница продукта</small></button><button class="template-card" data-template="counter"><span class="template-visual counter-visual"><span class="counter-symbol">+1</span></span><strong>Счётчик</strong><small>Интерактивный JavaScript</small></button><button class="template-card" data-template="profile"><span class="template-visual profile-visual"><span class="avatar-dot">☺</span><span class="profile-lines"><i></i><i></i></span></span><strong>Профиль</strong><small>Карточка о себе</small></button></div></section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
